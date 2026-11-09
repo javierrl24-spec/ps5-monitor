@@ -2,11 +2,12 @@
 # PS5 Slim Digital o con disco, te manda una copia idéntica (misma foto, texto, enlaces y cupones) + enlace al post original.
 # Uso: monitor-ofertones.ps1            (normal, lo corre el Programador de tareas cada 5 min)
 #      monitor-ofertones.ps1 -Probar N  (manda una copia del post N del canal, para ver cómo se ve)
-param([int]$Probar = 0)
+param([int]$Probar = 0, [string]$De = "OfertonesMexico")
 $ErrorActionPreference = 'Stop'
 $dir = Split-Path -Parent $MyInvocation.MyCommand.Path
 . (Join-Path $dir "telegram-comun.ps1")
-$canal = "OfertonesMexico"
+$canales = @(@{ u = "OfertonesMexico"; n = "Ofertones México" }, @{ u = "ofertasimperdiblesmexico"; n = "Ofertas Imperdibles México" }, @{ u = "MegaOfertonesMX"; n = "Mega Ofertones MX" })
+$canal = "OfertonesMexico"; $nombreCanal = "Ofertones México"
 $ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 $fEstado = Join-Path $dir "ofertones-ultimo.txt"
 $log = Join-Path $dir "monitor-log.txt"
@@ -71,7 +72,7 @@ function Mandar-Copia($p) {
             $cuando = "🕒 " + $mx.ToString("d MMM yyyy, HH:mm", [Globalization.CultureInfo]::GetCultureInfo('es-MX')) + " (CDMX)`n"
         } catch { }
     }
-    $pie = "📢 <b>Ofertones México</b>`n" + $cuando + "`n" + $cuerpo + "`n`n🔗 <a href=""https://t.me/$canal/$($p.id)"">Ver en Telegram</a>"
+    $pie = "📢 <b>" + $nombreCanal + "</b>`n" + $cuando + "`n" + $cuerpo + "`n`n🔗 <a href=""https://t.me/$canal/$($p.id)"">Ver en Telegram</a>"
     try {
         # enviar-telegram.ps1 ya sabe: foto por URL → si falla, la descarga y la sube → si falla, solo texto
         $tmp = Join-Path $env:TEMP ("ofertones_" + $p.id + ".txt")
@@ -85,32 +86,58 @@ function Mandar-Copia($p) {
     } catch {
         Log "Formato rechazado en post $($p.id): $($_.Exception.Message); se manda en texto plano"
         # Si el formato falla, manda el texto plano con el enlace al post (Telegram muestra la vista previa del original)
-        $null = Invoke-Telegram "sendMessage" @{ chat_id = $chatId; text = ("📢 Ofertones México`n`n" + (Texto-Plano $p.html) + "`n`nhttps://t.me/$canal/$($p.id)") }
+        $null = Invoke-Telegram "sendMessage" @{ chat_id = $chatId; text = ("📢 " + $nombreCanal + "`n`n" + (Texto-Plano $p.html) + "`n`nhttps://t.me/$canal/$($p.id)") }
     }
 }
 
 if ($Probar -gt 0) {
+    $x = $canales | Where-Object { $_.u -eq $De } | Select-Object -First 1; $canal = $x.u; $nombreCanal = $x.n
     $ps = Leer-Pagina ("?before=" + ($Probar + 1))
     $p = $ps | Where-Object { $_.id -eq $Probar } | Select-Object -First 1
     if (-not $p) { throw "No encontré el post $Probar" }
     Mandar-Copia $p; Write-Host "Copia del post $Probar enviada."; return
 }
 
-$ultimo = if (Test-Path $fEstado) { [int](Get-Content $fEstado -Raw).Trim() } else { 0 }
-$todos = @(); $pag = Leer-Pagina ""; $todos += $pag
-# Si hubo muchos posts desde la última vez, lee hasta 4 páginas hacia atrás
-$vueltas = 0
-while ($ultimo -gt 0 -and $pag.Count -gt 0 -and (($pag | Measure-Object id -Minimum).Minimum -gt $ultimo + 1) -and $vueltas -lt 4) {
-    $pag = Leer-Pagina ("?before=" + ($pag | Measure-Object id -Minimum).Minimum); $todos += $pag; $vueltas++
+# --- Normal: revisa los 3 canales; estado por canal y sin repetir la misma oferta publicada en dos canales ---
+$fEst = Join-Path $dir "ofertones-estado.json"
+$est = @{}
+if (Test-Path $fEst) { (Get-Content $fEst -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $est[$_.Name] = [int]$_.Value } }
+elseif (Test-Path $fEstado) { $est["OfertonesMexico"] = [int](Get-Content $fEstado -Raw).Trim() }   # migración del estado viejo
+$fVistos = Join-Path $dir "ofertones-enviados.json"
+$vistos = @{}
+if (Test-Path $fVistos) { (Get-Content $fVistos -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $vistos[$_.Name] = $_.Value } }
+$limite = (Get-Date).ToUniversalTime().AddHours(-12).ToString('s')
+foreach ($k in @($vistos.Keys)) { if ($vistos[$k] -lt $limite) { $vistos.Remove($k) } }
+function Clave-Oferta([string]$s) {
+    $s = $s -replace '(?i)^.*?(amazon|mercado ?libre|walmart|bodega aurrera|soriana|liverpool|coppel|costco|sam.s club|elektra|chedraui)\s*:\s*', ''
+    $s = ($s.ToLower() -replace '[^a-z0-9áéíóúñ ]', ' ' -replace '\s+', ' ').Trim()
+    return (($s -split ' ' | Select-Object -First 6) -join ' ')
 }
-if ($todos.Count -eq 0) { Log "No se pudo leer el canal"; return }
-$max = ($todos | Measure-Object id -Maximum).Maximum
-if ($ultimo -eq 0) { Set-Content $fEstado $max; Log "Inicio: último post $max"; return }
-
-$nuevos = $todos | Where-Object { $_.id -gt $ultimo } | Sort-Object id -Unique
-$enviados = 0
-foreach ($p in $nuevos) {
-    if (Es-PS5 (Texto-Plano $p.html)) { Mandar-Copia $p; $enviados++; Log "Copiado post $($p.id)" }
+foreach ($c in $canales) {
+    $canal = $c.u; $nombreCanal = $c.n
+    try {
+        $ultimo = if ($est.ContainsKey($canal)) { [int]$est[$canal] } else { 0 }
+        $todos = @(); $pag = Leer-Pagina ""; $todos += $pag
+        $vueltas = 0
+        while ($ultimo -gt 0 -and $pag.Count -gt 0 -and (($pag | Measure-Object id -Minimum).Minimum -gt $ultimo + 1) -and $vueltas -lt 4) {
+            $pag = Leer-Pagina ("?before=" + ($pag | Measure-Object id -Minimum).Minimum); $todos += $pag; $vueltas++
+        }
+        if ($todos.Count -eq 0) { Log "No se pudo leer $canal"; continue }
+        $max = ($todos | Measure-Object id -Maximum).Maximum
+        if ($ultimo -eq 0) { $est[$canal] = $max; Log "Inicio ${canal}: último post $max"; continue }
+        $nuevos = $todos | Where-Object { $_.id -gt $ultimo } | Sort-Object id -Unique
+        $enviados = 0
+        foreach ($p in $nuevos) {
+            $plano = Texto-Plano $p.html
+            if (-not (Es-PS5 $plano)) { continue }
+            $clave = Clave-Oferta $plano
+            if ($clave.Length -gt 10 -and $vistos.ContainsKey($clave)) { Log "Repetido (ya enviado): $canal/$($p.id)"; continue }
+            Mandar-Copia $p; $enviados++; Log "Copiado $canal/$($p.id)"
+            if ($clave.Length -gt 10) { $vistos[$clave] = (Get-Date).ToUniversalTime().ToString('s') }
+        }
+        $est[$canal] = $max
+        if ($enviados -eq 0) { Log "Sin PS5 en $(@($nuevos).Count) posts nuevos de $canal" }
+    } catch { Log "FALLA ${canal}: $($_.Exception.Message)" }
 }
-Set-Content $fEstado $max
-if ($enviados -eq 0) { Log "Sin PS5 en $(@($nuevos).Count) posts nuevos" }
+($est | ConvertTo-Json -Compress) | Set-Content $fEst -Encoding UTF8
+($vistos | ConvertTo-Json -Compress) | Set-Content $fVistos -Encoding UTF8
