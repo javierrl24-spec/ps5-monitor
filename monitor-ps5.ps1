@@ -124,13 +124,22 @@ $noLlega = @()
 $fNo = Join-Path $dir "monitor-no-llega.txt"
 if (Test-Path $fNo) { $nombresNo = Get-Content $fNo -Encoding UTF8 | Where-Object { $_.Trim() } ; $noLlega = @($items | Where-Object { $nombresNo -contains ($_.tienda + '|' + $_.nombre) -or $nombresNo -contains ($_.tienda + '|' + $_.precio) } | ForEach-Object { $_.id }) }
 foreach ($it in $items) {
-    $nuevoEstado[$it.id] = @{ precio = $it.precio; disponible = $it.disponible; visto = (Get-Date -Format 's') }
+    $nuevoEstado[$it.id] = @{ precio = $it.precio; disponible = $it.disponible; visto = (Get-Date -Format 's'); avisado = $(if ($antes[$it.id] -and $antes[$it.id].avisado -and $it.precio -lt 10000) { [double]$antes[$it.id].avisado } else { $null }) }
     if ($primera -or -not $it.disponible) { continue }
     $prev = $antes[$it.id]
     $motivo = $null
     if (-not $prev) { $motivo = "🆕 <b>Nueva en la tienda</b>" }
     elseif (-not $prev.disponible) { $motivo = "🟢 <b>Volvió a haber existencias</b>" }
     elseif ($it.precio -lt [double]$prev.precio - 1) { $motivo = "🔻 <b>Bajó</b> de " + (& $fmt $prev.precio) }
+    # Escalera bajo $10,000: avisa al cruzar los $10,000 (y los $9,000) y luego cada vez que baja $100 más
+    if ($it.condicion -eq 'Nuevo' -and $it.precio -lt 10000) {
+        $av = $nuevoEstado[$it.id].avisado
+        if ($null -eq $av -or $it.precio -le [double]$av - 100) {
+            $motivo = $(if ($it.precio -lt 9000) { "🔥🔥 <b>Bajo `$9,000</b>" } else { "🔥 <b>Bajo `$10,000</b>" })
+            if ($null -ne $av) { $motivo += " · ⬇️ bajó " + (& $fmt ([double]$av - $it.precio)) + " más (antes " + (& $fmt $av) + ")" }
+            $nuevoEstado[$it.id].avisado = $it.precio
+        } else { $motivo = $null }
+    }
     $obj = $objetivos[$it.consola]
     $enObjetivo = ($it.condicion -eq 'Nuevo' -and $obj -and $it.precio -le $obj)
     if (-not $motivo) { continue }
@@ -152,7 +161,7 @@ foreach ($it in $items) {
     $avisos += [pscustomobject]@{ orden = $(if ($enObjetivo) { 0 } else { 1 }); precio = $it.precio; texto = ($linea -join "`n") }
 }
 # Lo que no se vio esta vez se conserva marcado como no disponible (para detectar cuando vuelva)
-foreach ($k in $antes.Keys) { if (-not $nuevoEstado.ContainsKey($k)) { $nuevoEstado[$k] = @{ precio = $antes[$k].precio; disponible = $false; visto = $antes[$k].visto } } }
+foreach ($k in $antes.Keys) { if (-not $nuevoEstado.ContainsKey($k)) { $nuevoEstado[$k] = @{ precio = $antes[$k].precio; disponible = $false; visto = $antes[$k].visto; avisado = $antes[$k].avisado } } }
 # Si una tienda falló, no la marques como agotada
 foreach ($t in $fallas) { foreach ($k in $antes.Keys) { if ($k -like "$t|*") { $nuevoEstado[$k] = $antes[$k] } } }
 $nuevoEstado | ConvertTo-Json -Depth 4 | Set-Content -Path $fEstado -Encoding UTF8
