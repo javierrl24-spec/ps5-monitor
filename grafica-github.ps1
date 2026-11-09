@@ -8,7 +8,8 @@ $edad = 99
 $fU = Join-Path $dir "ultima-revision.txt"
 if (Test-Path $fU) { $edad = ([DateTime]::UtcNow - [DateTime]::Parse((Get-Content $fU -Raw).Trim()).ToUniversalTime()).TotalHours }
 if ($edad -lt 5 -and -not $Forzar) { "La PC revisó hace $([math]::Round($edad,1)) h: no hace falta."; return }
-$filas = @([IO.File]::ReadAllText((Join-Path $dir "precios.json"), [Text.Encoding]::UTF8) | ConvertFrom-Json)
+$filas = [IO.File]::ReadAllText((Join-Path $dir "precios.json"), [Text.Encoding]::UTF8) | ConvertFrom-Json
+$filas = @($filas | ForEach-Object { $_ })   # PowerShell 5 entrega el arreglo como un solo objeto: se aplana
 $mon = [IO.File]::ReadAllText((Join-Path $dir "monitor-ultimo.json"), [Text.Encoding]::UTF8) | ConvertFrom-Json
 $tz = [TimeZoneInfo]::FindSystemTimeZoneById('Central Standard Time (Mexico)')
 $hoy = [TimeZoneInfo]::ConvertTime([DateTime]::UtcNow, [TimeZoneInfo]::Utc, $tz).ToString('yyyy-MM-dd')
