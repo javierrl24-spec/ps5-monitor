@@ -55,7 +55,10 @@ function Texto-Plano([string]$h) { [System.Net.WebUtility]::HtmlDecode(([regex]:
 
 # ¿Es una consola PS5 Slim Digital o con disco? (no Pro, no juegos, no accesorios)
 function Es-PS5([string]$t) {
-    if ($t -notmatch '(?i)ps5|playstation\s?5|playstation®\s?5|play station 5') { return $false }
+    if ($t -match '(?i)ps4|ps3|playstation ?4|playstation ?3|vita|\bpsp\b') { return $false }
+    $esPS5 = $t -match '(?i)\bps ?5\b|playstation\s?5|playstation®\s?5|play ?station ?5'
+    if (-not $esPS5 -and $t -match '(?i)play ?station' -and $t -match '(?i)slim|825 ?gb|1 ?tb|astro bot|gran turismo 7') { $esPS5 = $true }
+    if (-not $esPS5) { return $false }
     if ($t -notmatch '(?i)consola|console|bundle|paquete|slim|edici[oó]n digital|digital edition|est[aá]ndar|standard') { return $false }
     if ($t -match '(?i)\bps5 pro\b|playstation\s?5 pro|\bpro\b.{0,12}(2 ?tb|consola)') { return $false }
     if ($t -match '(?i)control(?!\s?inal[aá]mbrico dualsense incluido)|dualsense|juego para|videojuego|portal|aud[ií]fonos|headset|soporte|funda|base de carga|cargador|unidad de disco|lector de disco para|skin|volante|tarjeta de regalo|playstation plus|ps plus|cubierta|carcasa|tapas|faceplate|auriculares|teclado|monitor|switch hdmi') { return $false }
