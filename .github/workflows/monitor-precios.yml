@@ -1,0 +1,37 @@
+name: Monitor precios PS5
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'ver = solo mostrar lo leido (prueba) · vacio = normal'
+        default: ''
+concurrency:
+  group: monitor-precios
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: windows-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Monitor
+        shell: powershell
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+          MODO: ${{ github.event.inputs.modo }}
+        run: |
+          if ($env:MODO -eq 'ver') { .\monitor-ps5.ps1 -Ver } else { .\monitor-ps5.ps1 }
+          if (Test-Path monitor-log.txt) { Get-Content monitor-log.txt -Tail 15 }
+      - name: Guardar estado
+        if: ${{ github.event.inputs.modo != 'ver' }}
+        shell: bash
+        run: |
+          git config user.name "monitor-bot"
+          git config user.email "monitor-bot@users.noreply.github.com"
+          git add monitor-estado.json monitor-ultimo.json
+          git diff --cached --quiet || (git commit -m "estado precios" && git pull --rebase -q && git push -q)
