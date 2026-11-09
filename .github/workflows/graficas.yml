@@ -1,0 +1,26 @@
+name: Graficas con PC apagada
+on:
+  schedule:
+    - cron: '30 3,15,21 * * *'
+  workflow_dispatch:
+    inputs:
+      forzar:
+        description: 'si = mandar aunque la PC haya revisado hace poco'
+        default: ''
+concurrency:
+  group: graficas
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: windows-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dibujar y mandar
+        shell: powershell
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+          FORZAR: ${{ github.event.inputs.forzar }}
+        run: |
+          if ($env:FORZAR -eq 'si') { .\grafica-github.ps1 -Forzar } else { .\grafica-github.ps1 }
