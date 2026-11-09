@@ -1,0 +1,98 @@
+﻿{
+    "revisado":  "2026-11-09T02:35:49Z",
+    "fallas":  [
+
+               ],
+    "precios":  [
+                    {
+                        "tienda":  "Elektra",
+                        "producto":  "PS5 Pro",
+                        "condicion":  "Nuevo",
+                        "precio":  19999,
+                        "nombre":  "Consola PS5 Pro Stand Alone Blanca",
+                        "internacional":  false,
+                        "url":  "https://www.elektra.mx/consola-ps5-pro-stand-alone-blanca-3024581-1300710482/p"
+                    },
+                    {
+                        "tienda":  "Elektra",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  10499,
+                        "nombre":  "Consola PS5 Edición Digital Slim más 2 Juegos",
+                        "internacional":  false,
+                        "url":  "https://www.elektra.mx/consola-ps5-edicion-digital-slim-mas-2-juegos-3024381/p"
+                    },
+                    {
+                        "tienda":  "Elektra",
+                        "producto":  "PS5 Slim Disco",
+                        "condicion":  "Nuevo",
+                        "precio":  14699,
+                        "nombre":  "Consola PS5 Edición Estándar Slim más 2 Juegos",
+                        "internacional":  false,
+                        "url":  "https://www.elektra.mx/consola-ps5-edicion-estandar-slim-mas-2-juegos-3024791/p"
+                    },
+                    {
+                        "tienda":  "Chedraui",
+                        "producto":  "PS5 Slim Disco",
+                        "condicion":  "Nuevo",
+                        "precio":  14695,
+                        "nombre":  "Bundle Consola Playstation 5 Astro Bot y Gran Turismo 7",
+                        "internacional":  false,
+                        "url":  "https://www.chedraui.com.mx/bundle-consola-playstation-5-astro-bot-y-gran-turismo-7-3879486/p"
+                    },
+                    {
+                        "tienda":  "Chedraui",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  12495,
+                        "nombre":  "Bundle Consola Playstation 5 Edición Digital de 825 Gb: Astro Bot y Gran Turismo 7",
+                        "internacional":  false,
+                        "url":  "https://www.chedraui.com.mx/bundle-consola-playstation-5-edicion-digital-de-825-gb-astro-bot-y-gran-turismo-7-3879487/p"
+                    },
+                    {
+                        "tienda":  "Cyberpuerta",
+                        "producto":  "PS5 Slim Disco",
+                        "condicion":  "Nuevo",
+                        "precio":  15919,
+                        "nombre":  "Sony PlayStation 5 Slim Standard Edition 1TB, Wi-Fi, Lector de Discos, Negro/Blanco",
+                        "internacional":  false,
+                        "url":  "https://www.cyberpuerta.mx/Audio-y-Video/Consolas-y-Juegos/PlayStation-5-PS5/Consolas-PlayStation-5/Sony-PlayStation-5-Slim-Standard-Edition-1TB-Wi-Fi-Lector-de-Discos-Negro-Blanco.html"
+                    },
+                    {
+                        "tienda":  "Cyberpuerta",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  13679,
+                        "nombre":  "Playstation 5 ASTRO BOT + GT7 825GB, Wi-Fi, Negro/Blanco",
+                        "internacional":  false,
+                        "url":  "https://www.cyberpuerta.mx/Audio-y-Video/Consolas-y-Juegos/PlayStation-5-PS5/Consolas-PlayStation-5/Playstation-5-ASTRO-BOT-GT7-825GB-Wi-Fi-Negro-Blanco.html"
+                    },
+                    {
+                        "tienda":  "Liverpool",
+                        "producto":  "PS5 Slim Disco",
+                        "condicion":  "Nuevo",
+                        "precio":  14699,
+                        "nombre":  "Consola PS5 de 1 TB edición estándar",
+                        "internacional":  false,
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5-de-825-gb-edici%c3%b3n-bundle/1186785807"
+                    },
+                    {
+                        "tienda":  "Liverpool",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  12499,
+                        "nombre":  "Consola PS5 de 825 GB edición bundle",
+                        "internacional":  false,
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5/1156059630"
+                    },
+                    {
+                        "tienda":  "Liverpool",
+                        "producto":  "PS5 Pro",
+                        "condicion":  "Nuevo",
+                        "precio":  29169,
+                        "nombre":  "Consola fija ps5 de 2 tb",
+                        "internacional":  false,
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/control-inal%c3%a1mbrico-para-playstation-5-edici%c3%b3n-especial/1180311170"
+                    }
+                ]
+}
