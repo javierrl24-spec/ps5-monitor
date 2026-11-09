@@ -7,6 +7,9 @@ on:
       probar:
         description: 'ID de un post para mandar de prueba (0 = normal)'
         default: '0'
+      canal:
+        description: 'canal del post de prueba'
+        default: 'OfertonesMexico'
 concurrency:
   group: ofertones
   cancel-in-progress: false
@@ -24,8 +27,9 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
           PROBAR: ${{ github.event.inputs.probar }}
+          CANAL: ${{ github.event.inputs.canal }}
         run: |
-          if ($env:PROBAR -and $env:PROBAR -ne '0') { .\monitor-ofertones.ps1 -Probar ([int]$env:PROBAR) } else { .\monitor-ofertones.ps1 }
+          if ($env:PROBAR -and $env:PROBAR -ne '0') { .\monitor-ofertones.ps1 -Probar ([int]$env:PROBAR) -De $env:CANAL } else { .\monitor-ofertones.ps1 }
       - name: Guardar estado
         shell: bash
         run: |
