@@ -1,5 +1,5 @@
 ﻿{
-    "revisado":  "2026-11-10T15:30:18Z",
+    "revisado":  "2026-11-10T16:26:01Z",
     "fallas":  [
 
                ],
@@ -71,17 +71,17 @@
                         "tienda":  "Liverpool",
                         "producto":  "PS5 Slim Disco",
                         "condicion":  "Nuevo",
-                        "precio":  14699,
-                        "nombre":  "Consola PS5 de 1 TB edición estándar",
+                        "precio":  14499,
+                        "nombre":  "Consola PS5 de 1 TB edición bundle",
                         "internacional":  false,
-                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5-de-825-gb-edici%c3%b3n-bundle/1186785807"
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5-de-1-tb-edici%c3%b3n-limitada/1191456056"
                     },
                     {
                         "tienda":  "Liverpool",
                         "producto":  "PS5 Slim Digital",
                         "condicion":  "Nuevo",
-                        "precio":  12499,
-                        "nombre":  "Consola PS5 de 825 GB edición bundle",
+                        "precio":  11999,
+                        "nombre":  "Consola PS5 de 1 TB edición digital",
                         "internacional":  false,
                         "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5/1156059630"
                     },
@@ -92,7 +92,7 @@
                         "precio":  29169,
                         "nombre":  "Consola fija ps5 de 2 tb",
                         "internacional":  false,
-                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-nintendo-switch-2-de-256-gb-edici%c3%b3n-est%c3%a1ndar/1177646322"
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/control-inal%c3%a1mbrico-para-playstation-5-edici%c3%b3n-limitada-wolverine/1207351969"
                     }
                 ]
 }
