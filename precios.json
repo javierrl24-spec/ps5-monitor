@@ -865,7 +865,7 @@
     },
     {
         "fecha":  "2026-11-09",
-        "revisado":  "2026-11-09T21:32:49Z",
+        "revisado":  "2026-11-09T21:51:46Z",
         "producto":  "PS5 Slim Digital",
         "condicion":  "Nuevo",
         "tienda":  "Amazon México",
@@ -877,19 +877,19 @@
     },
     {
         "fecha":  "2026-11-09",
-        "revisado":  "2026-11-09T21:32:49Z",
+        "revisado":  "2026-11-10T03:32:22Z",
         "producto":  "PS5 Slim Disco",
         "condicion":  "Nuevo",
         "tienda":  "Sam's Club",
-        "precio":  14599,
-        "requisito":  "Membresía; precio general en línea, confirma en tu club/tienda",
+        "precio":  10638.18,
+        "requisito":  "Combo precio de socio (membresía); precio general en línea, confirma en tu club/tienda",
         "evento":  "",
         "fuente":  "https://www.sams.com.mx/browse/juguetes-y-videojuegos/videojuegos/play-station/1850006_1850008_1850011",
         "fecha_aproximada":  "No"
     },
     {
         "fecha":  "2026-11-09",
-        "revisado":  "2026-11-09T21:32:49Z",
+        "revisado":  "2026-11-09T21:51:46Z",
         "producto":  "PS5 Slim Digital",
         "condicion":  "Nuevo",
         "tienda":  "Chedraui",
@@ -901,7 +901,7 @@
     },
     {
         "fecha":  "2026-11-09",
-        "revisado":  "2026-11-09T21:32:49Z",
+        "revisado":  "2026-11-09T21:51:46Z",
         "producto":  "PS5 Slim Disco",
         "condicion":  "Nuevo",
         "tienda":  "Cyberpuerta",
@@ -913,14 +913,38 @@
     },
     {
         "fecha":  "2026-11-09",
-        "revisado":  "2026-11-09T21:32:49Z",
+        "revisado":  "2026-11-09T23:20:20Z",
         "producto":  "PS5 Pro",
         "condicion":  "Nuevo",
         "tienda":  "Liverpool",
-        "precio":  29169,
-        "requisito":  "Consola fija ps5 de 2 tb",
+        "precio":  28249,
+        "requisito":  "Consola fija PS5 2TB edición digital (antes $36,729)",
         "evento":  "",
-        "fuente":  "https://www.liverpool.com.mx/tienda/pdp/control-inal%c3%a1mbrico-para-playstation-5-edici%c3%b3n-especial/1180311170",
+        "fuente":  "https://www.liverpool.com.mx/tienda?s=ps5",
+        "fecha_aproximada":  "No"
+    },
+    {
+        "fecha":  "2026-11-09",
+        "revisado":  "2026-11-10T03:32:22Z",
+        "producto":  "PS5 Slim Disco",
+        "condicion":  "Nuevo",
+        "tienda":  "Amazon México",
+        "precio":  14199,
+        "requisito":  "Vendido por Amazon",
+        "evento":  "",
+        "fuente":  "https://www.amazon.com.mx/dp/B0FTNL3B9F",
+        "fecha_aproximada":  "No"
+    },
+    {
+        "fecha":  "2026-11-09",
+        "revisado":  "2026-11-10T03:32:22Z",
+        "producto":  "PS5 Slim Digital",
+        "condicion":  "Nuevo",
+        "tienda":  "Sam's Club",
+        "precio":  11999,
+        "requisito":  "Precio en línea; membresía Sam's; precio general en línea, confirma en tu club/tienda",
+        "evento":  "",
+        "fuente":  "https://www.sams.com.mx/browse/juguetes-y-videojuegos/videojuegos/play-station/1850006_1850008_1850011",
         "fecha_aproximada":  "No"
     }
 ]
