@@ -101,19 +101,26 @@ if ($Probar -gt 0) {
     Mandar-Copia $p; Write-Host "Copia del post $Probar enviada."; return
 }
 
+$script:hashes = @{}
 function Guardar-Estado {
+    # Sube el estado con la API de GitHub (sin git pull/rebase, que se atoraba con los otros commits)
     $ErrorActionPreference = 'Continue'
-    try {
-        & git add ofertones-ultimo.txt ofertones-estado.json ofertones-enviados.json 2>&1 | Out-Null
-        & git diff --cached --quiet 2>&1 | Out-Null
-        if ($LASTEXITCODE -ne 0) {
-            & git commit -q -m "estado ofertones" 2>&1 | Out-Null
-            & git pull --rebase -q 2>&1 | Out-Null
-            & git push -q 2>&1 | Out-Null
-        }
-    } catch { }
-}
-function Pasada {
+    foreach ($f in 'ofertones-ultimo.txt', 'ofertones-estado.json', 'ofertones-enviados.json') {
+        try {
+            $ruta = Join-Path $dir $f
+            if (-not (Test-Path $ruta)) { continue }
+            $h = (Get-FileHash $ruta -Algorithm SHA1).Hash
+            if ($script:hashes[$f] -eq $h) { continue }
+            $sha = & gh api "repos/$env:GITHUB_REPOSITORY/contents/$f" --jq '.sha' 2>$null
+            $o = @{ message = "estado ofertones"; content = [Convert]::ToBase64String([IO.File]::ReadAllBytes($ruta)) }
+            if ($sha) { $o.sha = "$sha".Trim() }
+            $tmp = Join-Path $env:TEMP 'gh-est.json'
+            [IO.File]::WriteAllText($tmp, ($o | ConvertTo-Json -Compress), (New-Object Text.UTF8Encoding $false))
+            & gh api -X PUT "repos/$env:GITHUB_REPOSITORY/contents/$f" --input $tmp 2>&1 | Out-Null
+            if ($LASTEXITCODE -eq 0) { $script:hashes[$f] = $h } else { Log "No se pudo guardar $f" }
+        } catch { Log "Error guardando ${f}: $($_.Exception.Message)" }
+    }
+}function Pasada {
 # --- Normal: revisa los 3 canales; estado por canal y sin repetir la misma oferta publicada en dos canales ---
 $fEst = Join-Path $dir "ofertones-estado.json"
 $est = @{}
