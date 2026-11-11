@@ -17,7 +17,7 @@ $fNo = Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) "monitor-no-l
 if (Test-Path $fNo) { $noLlega = @(Get-Content $fNo -Encoding UTF8 | Where-Object { $_.Trim() } | ForEach-Object { $_.Trim() }) }
 $vistas = @{}
 $datos = @()
-$filas | Where-Object { $_.producto -eq $Producto -and $_.condicion -eq 'Nuevo' -and -not $_.tienda.StartsWith('Apple') -and $quitadas -notcontains $_.tienda } |
+$filas | Where-Object { $_.producto -eq $Producto -and $_.condicion -eq 'Nuevo' -and -not $_.tienda.StartsWith('Apple') -and $quitadas -notcontains $_.tienda -and $_.requisito -notmatch '(?i)precio final|pagando con|con cup[oó]n' } |
     Sort-Object @{e = { $_.fecha }; Descending = $true }, @{e = { $_.revisado }; Descending = $true } |
     ForEach-Object {
         $f = [datetime]::ParseExact($_.fecha.Substring(0, 10), 'yyyy-MM-dd', $null)
