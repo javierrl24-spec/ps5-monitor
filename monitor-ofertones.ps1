@@ -2,7 +2,7 @@
 # PS5 Slim Digital o con disco, te manda una copia idéntica (misma foto, texto, enlaces y cupones) + enlace al post original.
 # Uso: monitor-ofertones.ps1            (normal, lo corre el Programador de tareas cada 5 min)
 #      monitor-ofertones.ps1 -Probar N  (manda una copia del post N del canal, para ver cómo se ve)
-param([int]$Probar = 0, [string]$De = "OfertonesMexico")
+param([int]$Probar = 0, [string]$De = "OfertonesMexico", [int]$Bucle = 0, [int]$Cada = 30)
 $ErrorActionPreference = 'Stop'
 $dir = Split-Path -Parent $MyInvocation.MyCommand.Path
 . (Join-Path $dir "telegram-comun.ps1")
@@ -101,6 +101,19 @@ if ($Probar -gt 0) {
     Mandar-Copia $p; Write-Host "Copia del post $Probar enviada."; return
 }
 
+function Guardar-Estado {
+    $ErrorActionPreference = 'Continue'
+    try {
+        & git add ofertones-ultimo.txt ofertones-estado.json ofertones-enviados.json 2>&1 | Out-Null
+        & git diff --cached --quiet 2>&1 | Out-Null
+        if ($LASTEXITCODE -ne 0) {
+            & git commit -q -m "estado ofertones" 2>&1 | Out-Null
+            & git pull --rebase -q 2>&1 | Out-Null
+            & git push -q 2>&1 | Out-Null
+        }
+    } catch { }
+}
+function Pasada {
 # --- Normal: revisa los 3 canales; estado por canal y sin repetir la misma oferta publicada en dos canales ---
 $fEst = Join-Path $dir "ofertones-estado.json"
 $est = @{}
@@ -144,3 +157,13 @@ foreach ($c in $canales) {
 }
 ($est | ConvertTo-Json -Compress) | Set-Content $fEst -Encoding UTF8
 ($vistos | ConvertTo-Json -Compress) | Set-Content $fVistos -Encoding UTF8
+}
+if ($Bucle -le 0) { Pasada; return }
+# Modo continuo: revisa cada $Cada segundos durante $Bucle minutos (GitHub no respeta los horarios cortos)
+$fin = (Get-Date).AddMinutes($Bucle); $ultGuardado = Get-Date
+while ((Get-Date) -lt $fin) {
+    try { Pasada } catch { Log "FALLA pasada: $($_.Exception.Message)" }
+    if (((Get-Date) - $ultGuardado).TotalMinutes -ge 4) { Guardar-Estado; $ultGuardado = Get-Date }
+    Start-Sleep -Seconds $Cada
+}
+Guardar-Estado
