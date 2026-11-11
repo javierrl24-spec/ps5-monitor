@@ -36,6 +36,7 @@ jobs:
           TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
           PROBAR: ${{ github.event.inputs.probar }}
           CANAL: ${{ github.event.inputs.canal }}
+          GH_TOKEN: ${{ github.token }}
           BUCLE: ${{ github.event.inputs.bucle }}
         run: |
           if ($env:PROBAR -and $env:PROBAR -ne '0') { .\monitor-ofertones.ps1 -Probar ([int]$env:PROBAR) -De $env:CANAL }
