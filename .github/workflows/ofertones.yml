@@ -18,6 +18,7 @@ concurrency:
   cancel-in-progress: false
 permissions:
   contents: write
+  actions: write
 jobs:
   run:
     runs-on: windows-latest
