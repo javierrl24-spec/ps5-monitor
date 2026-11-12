@@ -168,7 +168,10 @@ foreach ($c in $canales) {
 if ($Bucle -le 0) { Pasada; return }
 # Modo continuo: revisa cada $Cada segundos durante $Bucle minutos (GitHub no respeta los horarios cortos)
 $fin = (Get-Date).AddMinutes($Bucle); $ultGuardado = Get-Date
+$siguiente = $false
 while ((Get-Date) -lt $fin) {
+    # Encadena la siguiente corrida 8 min antes de terminar, para que no haya huecos entre una y otra
+    if (-not $siguiente -and (Get-Date) -gt $fin.AddMinutes(-8)) { try { & gh workflow run ofertones.yml 2>&1 | Out-Null } catch { }; $siguiente = $true }
     try { Pasada } catch { Log "FALLA pasada: $($_.Exception.Message)" }
     if (((Get-Date) - $ultGuardado).TotalMinutes -ge 4) { Guardar-Estado; $ultGuardado = Get-Date }
     Start-Sleep -Seconds $Cada
