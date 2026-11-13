@@ -1,5 +1,5 @@
 ﻿{
-    "revisado":  "2026-11-13T05:40:37Z",
+    "revisado":  "2026-11-13T06:41:16Z",
     "fallas":  [
 
                ],
@@ -15,21 +15,21 @@
                     },
                     {
                         "tienda":  "Elektra",
-                        "producto":  "PS5 Slim Digital",
-                        "condicion":  "Nuevo",
-                        "precio":  10499,
-                        "nombre":  "Consola PS5 Edición Digital Slim más 2 Juegos",
-                        "internacional":  false,
-                        "url":  "https://www.elektra.mx/consola-ps5-edicion-digital-slim-mas-2-juegos-3024381/p"
-                    },
-                    {
-                        "tienda":  "Elektra",
                         "producto":  "PS5 Slim Disco",
                         "condicion":  "Nuevo",
                         "precio":  14699,
                         "nombre":  "Consola PS5 Edición Estándar Slim más 2 Juegos",
                         "internacional":  false,
                         "url":  "https://www.elektra.mx/consola-ps5-edicion-estandar-slim-mas-2-juegos-3024791/p"
+                    },
+                    {
+                        "tienda":  "Elektra",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  10499,
+                        "nombre":  "Consola PS5 Edición Digital Slim más 2 Juegos",
+                        "internacional":  false,
+                        "url":  "https://www.elektra.mx/consola-ps5-edicion-digital-slim-mas-2-juegos-3024381/p"
                     },
                     {
                         "tienda":  "Chedraui",
@@ -80,10 +80,10 @@
                         "tienda":  "Liverpool",
                         "producto":  "PS5 Slim Digital",
                         "condicion":  "Nuevo",
-                        "precio":  12499,
-                        "nombre":  "Consola PS5 de 825 GB edición bundle",
+                        "precio":  9920,
+                        "nombre":  "Consola PS5 de 1 TB edición digital",
                         "internacional":  false,
-                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5/1156059630"
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-fija-ps5-de-1-tb-edici%c3%b3n-est%c3%a1ndar/1180626286"
                     }
                 ]
 }
