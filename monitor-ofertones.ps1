@@ -171,7 +171,7 @@ foreach ($c in $canales) {
             $plano = Texto-Plano $p.html
             if (-not (Es-PS5 $plano)) { continue }
             # 12 nov: solo NUEVAS y bajo $10,000
-            if ($plano -match '(?i)reacondicionad|renewed|recertificad|seminuev|usad[oa]\b|open ?box|caja abierta') { Log "PS5 reacondicionada/usada ignorada: $canal/$($p.id)"; continue }
+            if ($plano -match '(?i)reacondicionad|renewed|renovad|refurb|recertificad|seminuev|usad[oa]\b|open ?box|caja abierta') { Log "PS5 reacondicionada/usada ignorada: $canal/$($p.id)"; continue }
             # 12 nov (después): Javier quiere TODAS las PS5 nuevas de los canales, sin filtro de precio
             $clave = Clave-Oferta $plano
             if ($clave.Length -gt 10 -and $vistos.ContainsKey($clave)) { Log "Repetido (ya enviado): $canal/$($p.id)"; continue }
@@ -179,6 +179,12 @@ foreach ($c in $canales) {
             if ($clave.Length -gt 10) { $vistos[$clave] = (Get-Date).ToUniversalTime().ToString('s') }
         }
         $est[$canal] = $max
+        if ($enviados -gt 0) {
+            # guarda y sube el estado al momento, para que la corrida siguiente (que arranca 6 min antes) no repita el mensaje
+            ($est | ConvertTo-Json -Compress) | Set-Content $fEst -Encoding UTF8
+            ($vistos | ConvertTo-Json -Compress) | Set-Content $fVistos -Encoding UTF8
+            if ($env:GITHUB_REPOSITORY) { Guardar-Estado }
+        }
         if ($enviados -eq 0) { Log "Sin PS5 en $(@($nuevos).Count) posts nuevos de $canal" }
     } catch { Log "FALLA ${canal}: $($_.Exception.Message)" }
 }
