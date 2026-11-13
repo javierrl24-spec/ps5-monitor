@@ -1,7 +1,6 @@
 name: Graficas con PC apagada
 on:
-  schedule:
-    - cron: '30 3,15,21 * * *'
+  # 12 nov: apagado el horario automático (Javier solo quiere mensajes de ofertas bajo $10k)
   workflow_dispatch:
     inputs:
       forzar:
