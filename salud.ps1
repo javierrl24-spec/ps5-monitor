@@ -27,7 +27,7 @@ foreach ($ch in 'OfertonesMexico', 'ofertasimperdiblesmexico', 'MegaOfertonesMX'
 $hora = [TimeZoneInfo]::ConvertTime([DateTime]::UtcNow, [TimeZoneInfo]::Utc, [TimeZoneInfo]::FindSystemTimeZoneById('Central Standard Time (Mexico)')).Hour
 "Salud: latido hace $([int]$edad) min; activa=$([bool]$activa); en espera=$([bool]$espera); problemas=$($problemas.Count); hora MX=$hora"
 $problemas | ForEach-Object { "  - $_" }
-if ($problemas.Count -and $hora -ge 6 -and $hora -lt 23) {
+if ($false) {   # 12 nov: Javier solo quiere mensajes de ofertas bajo $10k; la salud solo arregla, no escribe
     $txt = "⚠️ Revisión automática de los canales de Telegram`n" + ($problemas -join "`n") + $(if ($acciones) { "`n" + ($acciones -join " ") } else { "" })
     & (Join-Path $dir "enviar-telegram.ps1") -Mensaje $txt
 }
