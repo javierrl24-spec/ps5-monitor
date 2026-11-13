@@ -12,7 +12,7 @@ on:
         default: 'OfertonesMexico'
       bucle:
         description: 'minutos que revisa sin parar (345 = normal)'
-        default: '345'
+        default: '175'
 concurrency:
   group: ofertones
   cancel-in-progress: false
@@ -22,7 +22,7 @@ permissions:
 jobs:
   run:
     runs-on: windows-latest
-    timeout-minutes: 355
+    timeout-minutes: 195
     steps:
       - uses: actions/checkout@v4
       - name: Identidad git
@@ -41,4 +41,4 @@ jobs:
           BUCLE: ${{ github.event.inputs.bucle }}
         run: |
           if ($env:PROBAR -and $env:PROBAR -ne '0') { .\monitor-ofertones.ps1 -Probar ([int]$env:PROBAR) -De $env:CANAL }
-          else { $b = 345; if ($env:BUCLE) { $b = [int]$env:BUCLE }; .\monitor-ofertones.ps1 -Bucle $b -Cada 30 }
+          else { $b = 175; if ($env:BUCLE) { $b = [int]$env:BUCLE }; .\supervisor-ofertones.ps1 -Minutos $b }
