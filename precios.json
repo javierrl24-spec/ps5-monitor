@@ -1153,14 +1153,14 @@
     },
     {
         "fecha":  "2026-11-12",
-        "revisado":  "2026-11-12T02:19:59Z",
+        "revisado":  "2026-11-12T23:19:56Z",
         "producto":  "PS5 Slim Disco",
         "condicion":  "Nuevo",
         "tienda":  "Bodega Aurrera",
-        "precio":  13960,
-        "requisito":  "Paquete 1TB + Astro Bot + Gran Turismo 7; precio en línea (bajó desde $14,199)",
+        "precio":  13599,
+        "requisito":  "PS5 Slim blanca con lector, consola sola sin juegos; precio en línea (más barata que el paquete 1TB + Astro Bot + GT7 a $13,960); confirma en tu tienda",
         "evento":  "",
-        "fuente":  "https://www.bodegaaurrera.com.mx/ip/consola-playstation-5-1-tb-mas-astro-bot-y-gran-turismo-7/00071171902394",
+        "fuente":  "https://www.bodegaaurrera.com.mx/browse/videojuegos/playstation-5/consolas-ps5/264999_970024_970025",
         "fecha_aproximada":  "No"
     },
     {
@@ -1213,18 +1213,6 @@
     },
     {
         "fecha":  "2026-11-12",
-        "revisado":  "2026-11-12T22:35:01Z",
-        "producto":  "PS5 Slim Digital",
-        "condicion":  "Nuevo",
-        "tienda":  "Bodega Aurrera",
-        "precio":  11870,
-        "requisito":  "Paquete Astro Bot + GT7; precio general en línea, confirma en tu club/tienda",
-        "evento":  "",
-        "fuente":  "https://www.bodegaaurrera.com.mx/ip/consola-playstation-5-digital-825-gb-mas-astro-bot-y-gran-turismo-7/00071171902354",
-        "fecha_aproximada":  "No"
-    },
-    {
-        "fecha":  "2026-11-12",
         "revisado":  "2026-11-12T20:18:12Z",
         "producto":  "PS5 Slim Digital",
         "condicion":  "Nuevo",
@@ -1245,6 +1233,18 @@
         "requisito":  "Consola fija PS5 de 2 TB (Pro), precio en línea (bajó desde $29,169; 'antes' $36,729)",
         "evento":  "",
         "fuente":  "https://www.liverpool.com.mx/tienda/pdp/consola-fija-ps5-de-2-tb-edici%c3%b3n-digital/1193710707",
+        "fecha_aproximada":  "No"
+    },
+    {
+        "fecha":  "2026-11-12",
+        "revisado":  "2026-11-12T22:35:01Z",
+        "producto":  "PS5 Slim Digital",
+        "condicion":  "Nuevo",
+        "tienda":  "Bodega Aurrera",
+        "precio":  11870,
+        "requisito":  "Paquete Astro Bot + GT7; precio general en línea, confirma en tu club/tienda",
+        "evento":  "",
+        "fuente":  "https://www.bodegaaurrera.com.mx/ip/consola-playstation-5-digital-825-gb-mas-astro-bot-y-gran-turismo-7/00071171902354",
         "fecha_aproximada":  "No"
     },
     {
@@ -1305,6 +1305,30 @@
         "requisito":  "Precio de contado",
         "evento":  "",
         "fuente":  "https://www.coppel.com/sd/consola%20playstation%205?searchTerm=consola%20playstation%205",
+        "fecha_aproximada":  "No"
+    },
+    {
+        "fecha":  "2026-11-12",
+        "revisado":  "2026-11-12T23:19:56Z",
+        "producto":  "PS5 Pro",
+        "condicion":  "Nuevo",
+        "tienda":  "Bodega Aurrera",
+        "precio":  27969,
+        "requisito":  "PS5 Pro 2TB blanca, precio en línea (subió desde $21,999 del 10 nov)",
+        "evento":  "",
+        "fuente":  "https://www.bodegaaurrera.com.mx/browse/videojuegos/playstation-5/consolas-ps5/264999_970024_970025",
+        "fecha_aproximada":  "No"
+    },
+    {
+        "fecha":  "2026-11-13",
+        "revisado":  "2026-11-13T02:21:16Z",
+        "producto":  "PS5 Slim Digital",
+        "condicion":  "Nuevo",
+        "tienda":  "Walmart",
+        "precio":  12499,
+        "requisito":  "Paquete Astro Bot + Gran Turismo 7, 825GB; precio en línea (subió desde $11,870); revisado antes del arranque del Buen Fin",
+        "evento":  "",
+        "fuente":  "https://www.walmart.com.mx/ip/consola-playstation-5-digital-825-gb-mas-astro-bot-y-gran-turismo-7/00071171902354",
         "fecha_aproximada":  "No"
     }
 ]
