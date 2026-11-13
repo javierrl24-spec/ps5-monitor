@@ -105,7 +105,9 @@ $script:hashes = @{}
 function Guardar-Estado {
     # Sube el estado con la API de GitHub (sin git pull/rebase, que se atoraba con los otros commits)
     $ErrorActionPreference = 'Continue'
-    foreach ($f in 'ofertones-ultimo.txt', 'ofertones-estado.json', 'ofertones-enviados.json') {
+    $lista = @('ofertones-ultimo.txt', 'ofertones-estado.json', 'ofertones-enviados.json')
+    if (-not $script:ultLatido -or ((Get-Date) - $script:ultLatido).TotalMinutes -ge 15) { $lista += 'latido.txt'; $script:ultLatido = Get-Date }
+    foreach ($f in $lista) {
         try {
             $ruta = Join-Path $dir $f
             if (-not (Test-Path $ruta)) { continue }
@@ -120,7 +122,8 @@ function Guardar-Estado {
             if ($LASTEXITCODE -eq 0) { $script:hashes[$f] = $h } else { Log "No se pudo guardar $f" }
         } catch { Log "Error guardando ${f}: $($_.Exception.Message)" }
     }
-}function Pasada {
+}
+function Pasada {
 # --- Normal: revisa los 3 canales; estado por canal y sin repetir la misma oferta publicada en dos canales ---
 $fEst = Join-Path $dir "ofertones-estado.json"
 $est = @{}
@@ -166,13 +169,12 @@ foreach ($c in $canales) {
 ($vistos | ConvertTo-Json -Compress) | Set-Content $fVistos -Encoding UTF8
 }
 if ($Bucle -le 0) { Pasada; return }
-# Modo continuo: revisa cada $Cada segundos durante $Bucle minutos (GitHub no respeta los horarios cortos)
+# Modo continuo: revisa cada $Cada segundos durante $Bucle minutos. Escribe latido.txt en cada vuelta para que el vigilante sepa que sigue vivo.
 $fin = (Get-Date).AddMinutes($Bucle); $ultGuardado = Get-Date
-$siguiente = $false
+$fLat = Join-Path $dir 'latido.txt'
 while ((Get-Date) -lt $fin) {
-    # Encadena la siguiente corrida 8 min antes de terminar, para que no haya huecos entre una y otra
-    if (-not $siguiente -and (Get-Date) -gt $fin.AddMinutes(-8)) { try { & gh workflow run ofertones.yml 2>&1 | Out-Null } catch { }; $siguiente = $true }
     try { Pasada } catch { Log "FALLA pasada: $($_.Exception.Message)" }
+    Set-Content -Path $fLat -Value ((Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'))
     if (((Get-Date) - $ultGuardado).TotalMinutes -ge 4) { Guardar-Estado; $ultGuardado = Get-Date }
     Start-Sleep -Seconds $Cada
 }
