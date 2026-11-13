@@ -17,7 +17,8 @@ function Log($m) { Add-Content -Path $log -Value ("{0} {1}" -f (Get-Date -Format
 
 # Modo noche: de 23:00 a 06:00 (hora de Delicias) este monitor no revisa ni avisa; solo siguen los canales de Telegram
 $horaMX = [TimeZoneInfo]::ConvertTime([DateTime]::UtcNow, [TimeZoneInfo]::Utc, [TimeZoneInfo]::FindSystemTimeZoneById('Central Standard Time (Mexico)')).Hour
-if (-not $Prueba -and -not $Ver -and ($horaMX -ge 23 -or $horaMX -lt 6)) { Log "Modo noche (23-6 h): sin revisión de tiendas"; return }
+# 12 nov: Javier quiere cazar toda la noche (solo avisa bajo $10k), modo noche apagado
+if ($false) { Log "Modo noche (23-6 h): sin revisión de tiendas"; return }
 function Get-Web($url) { (Invoke-WebRequest -Uri $url -UseBasicParsing -UserAgent $ua -TimeoutSec 30 -Headers @{ "Accept-Language" = "es-MX" }).Content }
 
 function Clasificar([string]$n, [double]$precio) {
