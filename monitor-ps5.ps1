@@ -128,7 +128,7 @@ $noLlega = @()
 $fNo = Join-Path $dir "monitor-no-llega.txt"
 if (Test-Path $fNo) { $nombresNo = Get-Content $fNo -Encoding UTF8 | Where-Object { $_.Trim() } ; $noLlega = @($items | Where-Object { $nombresNo -contains ($_.tienda + '|' + $_.nombre) -or $nombresNo -contains ($_.tienda + '|' + $_.precio) } | ForEach-Object { $_.id }) }
 foreach ($it in $items) {
-    $nuevoEstado[$it.id] = @{ precio = $it.precio; disponible = $it.disponible; visto = (Get-Date -Format 's'); avisado = $(if ($antes[$it.id] -and $antes[$it.id].avisado -and $it.precio -le 10000) { [double]$antes[$it.id].avisado } else { $null }) }
+    $nuevoEstado[$it.id] = @{ precio = $it.precio; disponible = $it.disponible; visto = (Get-Date -Format 's'); avisado = $(if ($antes[$it.id] -and $antes[$it.id].avisado -and $it.precio -lt 6000) { [double]$antes[$it.id].avisado } else { $null }) }
     if ($primera -or -not $it.disponible) { continue }
     $prev = $antes[$it.id]
     $motivo = $null
@@ -136,17 +136,10 @@ foreach ($it in $items) {
     elseif (-not $prev.disponible) { $motivo = "🟢 <b>Volvió a haber existencias</b>" }
     elseif ($it.precio -lt [double]$prev.precio - 1) { $motivo = "🔻 <b>Bajó</b> de " + (& $fmt $prev.precio) }
     # Solo consolas NUEVAS: avisa únicamente al llegar a $10,000 o menos, y otra vez si baja de $9,000 (no cada $100)
-    if ($it.condicion -eq 'Nuevo') {
-        if ($it.precio -le 10000) {
-            $av = $nuevoEstado[$it.id].avisado
-            $nivelAntes = if ($null -eq $av) { 0 } elseif ([double]$av -lt 9000) { 2 } else { 1 }
-            $nivel = if ($it.precio -lt 9000) { 2 } else { 1 }
-            if ($nivel -gt $nivelAntes) {
-                $motivo = $(if ($nivel -eq 2) { "🔥🔥 <b>Bajo `$9,000</b>" } else { "🔥 <b>A `$10,000 o menos</b>" })
-                $nuevoEstado[$it.id].avisado = $it.precio
-            } else { $motivo = $null }
-        } else { $motivo = $null }   # arriba de $10,000 no avisa
-    }    $obj = $objetivos[$it.consola]
+    # 13 nov: Javier ya compró; solo avisa si una consola NUEVA baja de $6,000 (una vez). Reacondicionadas nunca.
+    if ($it.condicion -eq 'Nuevo' -and $it.precio -lt 6000 -and $null -eq $nuevoEstado[$it.id].avisado) {
+        $motivo = "🔥🔥 <b>Bajo `$6,000</b>"; $nuevoEstado[$it.id].avisado = $it.precio
+    } else { $motivo = $null }    $obj = $objetivos[$it.consola]
     $enObjetivo = ($it.condicion -eq 'Nuevo' -and $obj -and $it.precio -le $obj)
     if (-not $motivo) { continue }
     # La simulación de envío de VTEX no es confiable (Elektra marca "Recoger en tienda" aunque no haya en Delicias)
