@@ -1,5 +1,5 @@
 ﻿{
-    "revisado":  "2026-11-13T17:33:37Z",
+    "revisado":  "2026-11-13T18:29:28Z",
     "fallas":  [
 
                ],
@@ -15,21 +15,21 @@
                     },
                     {
                         "tienda":  "Elektra",
-                        "producto":  "PS5 Slim Digital",
-                        "condicion":  "Nuevo",
-                        "precio":  10499,
-                        "nombre":  "Consola PS5 Edición Digital Slim más 2 Juegos",
-                        "internacional":  false,
-                        "url":  "https://www.elektra.mx/consola-ps5-edicion-digital-slim-mas-2-juegos-3024381/p"
-                    },
-                    {
-                        "tienda":  "Elektra",
                         "producto":  "PS5 Slim Disco",
                         "condicion":  "Nuevo",
                         "precio":  14699,
                         "nombre":  "Consola PS5 Edición Estándar Slim más 2 Juegos",
                         "internacional":  false,
                         "url":  "https://www.elektra.mx/consola-ps5-edicion-estandar-slim-mas-2-juegos-3024791/p"
+                    },
+                    {
+                        "tienda":  "Elektra",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  10499,
+                        "nombre":  "Consola PS5 Edición Digital Slim más 2 Juegos",
+                        "internacional":  false,
+                        "url":  "https://www.elektra.mx/consola-ps5-edicion-digital-slim-mas-2-juegos-3024381/p"
                     },
                     {
                         "tienda":  "Chedraui",
