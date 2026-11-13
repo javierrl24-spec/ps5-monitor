@@ -65,6 +65,20 @@ function Es-PS5([string]$t) {
     return $true
 }
 
+# Precio de la oferta: el "precio final" si lo dice; si no, el precio más bajo entre $4,000 y $40,000 que no sea un ahorro/cupón/mensualidad
+function Precio-Oferta([string]$t) {
+    $t = $t -replace '&#036;', '$'
+    $f = [regex]::Match($t, '(?i)precio final[^$\d]{0,40}\$\s?(\d{1,2},?\d{3})')
+    if ($f.Success) { return [double]($f.Groups[1].Value -replace ',', '') }
+    $vals = foreach ($m in [regex]::Matches($t, '\$\s?(\d{1,2},?\d{3})(?:\.\d\d)?')) {
+        $pre = $t.Substring([Math]::Max(0, $m.Index - 25), [Math]::Min(25, $m.Index))
+        if ($pre -match '(?i)ahorr|descuento|menos|cup[oó]n|bonific|cashback|regres|msi|meses|m[ií]nima|tope|hasta') { continue }
+        $v = [double]($m.Groups[1].Value -replace ',', ''); if ($v -ge 4000 -and $v -le 40000) { $v }
+    }
+    if ($vals) { return ($vals | Measure-Object -Minimum).Minimum }
+    return $null
+}
+
 function Mandar-Copia($p) {
     $cuerpo = A-HtmlTelegram $p.html
     $cuando = ""
@@ -156,6 +170,10 @@ foreach ($c in $canales) {
         foreach ($p in $nuevos) {
             $plano = Texto-Plano $p.html
             if (-not (Es-PS5 $plano)) { continue }
+            # 12 nov: solo NUEVAS y bajo $10,000
+            if ($plano -match '(?i)reacondicionad|renewed|recertificad|seminuev|usad[oa]\b|open ?box|caja abierta') { Log "PS5 reacondicionada/usada ignorada: $canal/$($p.id)"; continue }
+            $pr = Precio-Oferta $plano
+            if (-not $pr -or $pr -ge 10000) { Log "PS5 a $pr ignorada (no baja de 10k): $canal/$($p.id)"; continue }
             $clave = Clave-Oferta $plano
             if ($clave.Length -gt 10 -and $vistos.ContainsKey($clave)) { Log "Repetido (ya enviado): $canal/$($p.id)"; continue }
             Mandar-Copia $p; $enviados++; Log "Copiado $canal/$($p.id)"
