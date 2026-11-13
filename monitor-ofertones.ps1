@@ -61,7 +61,7 @@ function Es-PS5([string]$t) {
     if (-not $esPS5) { return $false }
     if ($t -notmatch '(?i)consola|console|bundle|paquete|slim|edici[oó]n digital|digital edition|est[aá]ndar|standard') { return $false }
     if ($t -match '(?i)\bps5 pro\b|playstation\s?5 pro|\bpro\b.{0,12}(2 ?tb|consola)') { return $false }
-    if ($t -match '(?i)control(?!\s?inal[aá]mbrico dualsense incluido)|dualsense|juego para|videojuego|portal|aud[ií]fonos|headset|soporte|funda|base de carga|cargador|unidad de disco|lector de disco para|skin|volante|tarjeta de regalo|playstation plus|ps plus|cubierta|carcasa|tapas|faceplate|auriculares|teclado|monitor|switch hdmi') { return $false }
+    if ($t -match '(?i)control(?!\s?inal[aá]mbrico dualsense incluido)|dualsense|juego para|videojuego|portal|aud[ií]fonos|headset|soporte|funda|base de carga|cargador|unidad (de )?disco|disc drive|lector de disco para|skin|volante|tarjeta de regalo|playstation plus|ps plus|cubierta|carcasa|tapas|faceplate|auriculares|teclado|monitor|switch hdmi') { return $false }
     return $true
 }
 
