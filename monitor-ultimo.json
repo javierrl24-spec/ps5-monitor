@@ -1,5 +1,5 @@
 ﻿{
-    "revisado":  "2026-11-13T12:51:45Z",
+    "revisado":  "2026-11-13T14:04:17Z",
     "fallas":  [
 
                ],
@@ -72,18 +72,18 @@
                         "producto":  "PS5 Slim Disco",
                         "condicion":  "Nuevo",
                         "precio":  14699,
-                        "nombre":  "Consola fija ps5 de 1 tb edición estándar",
+                        "nombre":  "Consola PS5 de 1 TB edición estándar",
                         "internacional":  false,
-                        "url":  "https://www.liverpool.com.mx/tienda/pdp/call-of-duty-modern-warfare-4-ps-est%c3%a1ndar-para-ps5/1201789504"
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5-de-825-gb-edici%c3%b3n-bundle/1186785807"
                     },
                     {
                         "tienda":  "Liverpool",
                         "producto":  "PS5 Slim Digital",
                         "condicion":  "Nuevo",
-                        "precio":  9920,
-                        "nombre":  "Consola PS5 de 1 TB edición digital",
+                        "precio":  12499,
+                        "nombre":  "Consola PS5 de 825 GB edición bundle",
                         "internacional":  false,
-                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-fija-ps5-de-1-tb-edici%c3%b3n-est%c3%a1ndar/1180626286"
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5/1156059630"
                     }
                 ]
 }
