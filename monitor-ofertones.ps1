@@ -172,7 +172,9 @@ foreach ($c in $canales) {
             if (-not (Es-PS5 $plano)) { continue }
             # 12 nov: solo NUEVAS y bajo $10,000
             if ($plano -match '(?i)reacondicionad|renewed|renovad|refurb|recertificad|seminuev|usad[oa]\b|open ?box|caja abierta') { Log "PS5 reacondicionada/usada ignorada: $canal/$($p.id)"; continue }
-            # 12 nov (después): Javier quiere TODAS las PS5 nuevas de los canales, sin filtro de precio
+            # 13 nov: Javier ya compró; solo copia PS5 nuevas a menos de $6,000
+            $pr = Precio-Oferta $plano
+            if (-not $pr -or $pr -ge 6000) { Log "PS5 a $pr ignorada (no baja de 6k): $canal/$($p.id)"; continue }
             $clave = Clave-Oferta $plano
             if ($clave.Length -gt 10 -and $vistos.ContainsKey($clave)) { Log "Repetido (ya enviado): $canal/$($p.id)"; continue }
             Mandar-Copia $p; $enviados++; Log "Copiado $canal/$($p.id)"
