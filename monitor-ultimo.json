@@ -1,5 +1,5 @@
 ﻿{
-    "revisado":  "2026-11-13T14:04:17Z",
+    "revisado":  "2026-11-13T14:57:56Z",
     "fallas":  [
 
                ],
@@ -15,21 +15,21 @@
                     },
                     {
                         "tienda":  "Elektra",
-                        "producto":  "PS5 Slim Digital",
-                        "condicion":  "Nuevo",
-                        "precio":  10499,
-                        "nombre":  "Consola PS5 Edición Digital Slim más 2 Juegos",
-                        "internacional":  false,
-                        "url":  "https://www.elektra.mx/consola-ps5-edicion-digital-slim-mas-2-juegos-3024381/p"
-                    },
-                    {
-                        "tienda":  "Elektra",
                         "producto":  "PS5 Slim Disco",
                         "condicion":  "Nuevo",
                         "precio":  14699,
                         "nombre":  "Consola PS5 Edición Estándar Slim más 2 Juegos",
                         "internacional":  false,
                         "url":  "https://www.elektra.mx/consola-ps5-edicion-estandar-slim-mas-2-juegos-3024791/p"
+                    },
+                    {
+                        "tienda":  "Elektra",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  10499,
+                        "nombre":  "Consola PS5 Edición Digital Slim más 2 Juegos",
+                        "internacional":  false,
+                        "url":  "https://www.elektra.mx/consola-ps5-edicion-digital-slim-mas-2-juegos-3024381/p"
                     },
                     {
                         "tienda":  "Chedraui",
@@ -53,7 +53,7 @@
                         "tienda":  "Cyberpuerta",
                         "producto":  "PS5 Slim Disco",
                         "condicion":  "Nuevo",
-                        "precio":  15949,
+                        "precio":  15919,
                         "nombre":  "Sony PlayStation 5 Slim Standard + Returnal y Ratchet \u0026 Clank: Rift Apart 1TB, Wi-Fi, Lector de Discos, Negro/Blanco",
                         "internacional":  false,
                         "url":  "https://www.cyberpuerta.mx/Audio-y-Video/Consolas-y-Juegos/PlayStation-5-PS5/Consolas-PlayStation-5/Sony-PlayStation-5-Slim-Standard-Returnal-y-Ratchet-Clank-Rift-Apart-1TB-Wi-Fi-Lector-de-Discos-Negro-Blanco.html"
