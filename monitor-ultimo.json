@@ -1,5 +1,5 @@
 ﻿{
-    "revisado":  "2026-11-14T10:02:08Z",
+    "revisado":  "2026-11-14T10:51:27Z",
     "fallas":  [
 
                ],
@@ -30,6 +30,15 @@
                         "nombre":  "Consola PS5 Edición Estándar Slim más 2 Juegos",
                         "internacional":  false,
                         "url":  "https://www.elektra.mx/consola-ps5-edicion-estandar-slim-mas-2-juegos-3024791/p"
+                    },
+                    {
+                        "tienda":  "Chedraui",
+                        "producto":  "PS5 Slim Disco",
+                        "condicion":  "Nuevo",
+                        "precio":  13220,
+                        "nombre":  "Bundle Consola Playstation 5 Astro Bot y Gran Turismo 7",
+                        "internacional":  false,
+                        "url":  "https://www.chedraui.com.mx/bundle-consola-playstation-5-astro-bot-y-gran-turismo-7-3879486/p"
                     },
                     {
                         "tienda":  "Chedraui",
