@@ -1,18 +1,9 @@
 ﻿{
-    "revisado":  "2026-11-15T02:32:58Z",
+    "revisado":  "2026-11-15T03:32:28Z",
     "fallas":  [
 
                ],
     "precios":  [
-                    {
-                        "tienda":  "Elektra",
-                        "producto":  "PS5 Pro",
-                        "condicion":  "Nuevo",
-                        "precio":  19999,
-                        "nombre":  "Consola PS5 Pro Stand Alone Blanca",
-                        "internacional":  false,
-                        "url":  "https://www.elektra.mx/consola-ps5-pro-stand-alone-blanca-3024581-1300710482/p"
-                    },
                     {
                         "tienda":  "Elektra",
                         "producto":  "PS5 Slim Digital",
