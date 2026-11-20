@@ -1,21 +1,15 @@
 ﻿{
-    "Liverpool|1207352230":  {
-                                 "visto":  "2026-11-20T17:07:13",
-                                 "precio":  19999,
-                                 "avisado":  null,
-                                 "disponible":  true
-                             },
-    "Liverpool|1186785807":  {
-                                 "visto":  "2026-11-20T17:07:13",
-                                 "precio":  12499,
-                                 "avisado":  null,
-                                 "disponible":  true
-                             },
     "Liverpool|1180626286":  {
                                  "visto":  "2026-11-13T12:51:45",
                                  "precio":  14699,
                                  "avisado":  null,
                                  "disponible":  false
+                             },
+    "Liverpool|1186785807":  {
+                                 "visto":  "2026-11-20T18:05:53",
+                                 "precio":  12499,
+                                 "avisado":  null,
+                                 "disponible":  true
                              },
     "Liverpool|999673966330":  {
                                    "visto":  "2026-11-12T21:43:18",
@@ -48,19 +42,19 @@
                                  "disponible":  false
                              },
     "Liverpool|1181568239":  {
-                                 "visto":  "2026-11-20T17:07:13",
+                                 "visto":  "2026-11-20T18:05:53",
                                  "precio":  20339,
                                  "avisado":  null,
                                  "disponible":  true
                              },
     "Cyberpuerta|20484601008-825ABGT7":  {
-                                             "visto":  "2026-11-20T17:07:13",
+                                             "visto":  "2026-11-20T18:05:53",
                                              "precio":  13779,
                                              "avisado":  null,
                                              "disponible":  true
                                          },
     "Liverpool|1145048938":  {
-                                 "visto":  "2026-11-20T17:07:13",
+                                 "visto":  "2026-11-20T18:05:53",
                                  "precio":  20339,
                                  "avisado":  null,
                                  "disponible":  true
@@ -72,10 +66,10 @@
                                  "disponible":  false
                              },
     "Liverpool|999688256084":  {
-                                   "visto":  "2026-11-12T20:00:47",
+                                   "visto":  "2026-11-20T18:05:53",
                                    "precio":  15299.08,
                                    "avisado":  null,
-                                   "disponible":  false
+                                   "disponible":  true
                                },
     "Liverpool|1191658155":  {
                                  "visto":  "2026-11-18T12:39:14",
@@ -84,7 +78,7 @@
                                  "disponible":  false
                              },
     "Cyberpuerta|PS5DIG-ASTRO":  {
-                                     "visto":  "2026-11-20T17:07:13",
+                                     "visto":  "2026-11-20T18:05:53",
                                      "precio":  14249,
                                      "avisado":  null,
                                      "disponible":  true
@@ -95,20 +89,14 @@
                                  "avisado":  9920,
                                  "disponible":  false
                              },
-    "Elektra|1301964100":  {
-                               "visto":  "2026-11-10T20:42:31",
-                               "precio":  27999,
-                               "avisado":  null,
-                               "disponible":  false
-                           },
     "Elektra|3024381":  {
-                            "visto":  "2026-11-20T17:07:13",
+                            "visto":  "2026-11-20T18:05:53",
                             "precio":  9099,
                             "avisado":  null,
                             "disponible":  true
                         },
     "Elektra|3024791":  {
-                            "visto":  "2026-11-20T17:07:13",
+                            "visto":  "2026-11-20T18:05:53",
                             "precio":  14699,
                             "avisado":  null,
                             "disponible":  true
@@ -132,13 +120,13 @@
                                    "disponible":  false
                                },
     "Liverpool|1186785793":  {
-                                 "visto":  "2026-11-20T17:07:13",
+                                 "visto":  "2026-11-20T18:05:53",
                                  "precio":  14699,
                                  "avisado":  null,
                                  "disponible":  true
                              },
     "Chedraui|3879486":  {
-                             "visto":  "2026-11-20T17:07:13",
+                             "visto":  "2026-11-20T18:05:53",
                              "precio":  11490,
                              "avisado":  null,
                              "disponible":  false
@@ -156,10 +144,16 @@
                                  "disponible":  false
                              },
     "Liverpool|1146391776":  {
-                                 "visto":  "2026-11-20T17:07:13",
+                                 "visto":  "2026-11-20T18:05:53",
                                  "precio":  20339,
                                  "avisado":  null,
                                  "disponible":  true
+                             },
+    "Liverpool|1150221311":  {
+                                 "visto":  "2026-11-10T16:26:01",
+                                 "precio":  14499,
+                                 "avisado":  null,
+                                 "disponible":  false
                              },
     "Liverpool|1150222024":  {
                                  "visto":  "2026-11-10T16:26:01",
@@ -168,25 +162,25 @@
                                  "disponible":  false
                              },
     "Cyberpuerta|1000049662":  {
-                                   "visto":  "2026-11-20T17:07:13",
+                                   "visto":  "2026-11-20T18:05:53",
                                    "precio":  9479,
                                    "avisado":  null,
                                    "disponible":  false
                                },
     "Chedraui|3879487":  {
-                             "visto":  "2026-11-20T17:07:13",
+                             "visto":  "2026-11-20T18:05:53",
                              "precio":  11240,
                              "avisado":  null,
                              "disponible":  false
                          },
     "Liverpool|1180626294":  {
-                                 "visto":  "2026-11-20T17:07:13",
+                                 "visto":  "2026-11-20T18:05:53",
                                  "precio":  19998,
                                  "avisado":  null,
                                  "disponible":  true
                              },
     "Liverpool|1147072330":  {
-                                 "visto":  "2026-11-20T17:07:13",
+                                 "visto":  "2026-11-20T18:05:53",
                                  "precio":  21419,
                                  "avisado":  null,
                                  "disponible":  true
@@ -198,7 +192,7 @@
                                  "disponible":  false
                              },
     "Cyberpuerta|0711719577287":  {
-                                      "visto":  "2026-11-20T17:07:13",
+                                      "visto":  "2026-11-20T18:05:53",
                                       "precio":  10069,
                                       "avisado":  null,
                                       "disponible":  false
@@ -209,6 +203,12 @@
                             "avisado":  null,
                             "disponible":  false
                         },
+    "Liverpool|1207352230":  {
+                                 "visto":  "2026-11-20T18:05:53",
+                                 "precio":  19999,
+                                 "avisado":  null,
+                                 "disponible":  true
+                             },
     "Liverpool|999673647202":  {
                                    "visto":  "2026-11-12T23:57:11",
                                    "precio":  33999,
@@ -216,7 +216,7 @@
                                    "disponible":  false
                                },
     "Cyberpuerta|71171957088":  {
-                                    "visto":  "2026-11-20T17:07:13",
+                                    "visto":  "2026-11-20T18:05:53",
                                     "precio":  15989,
                                     "avisado":  null,
                                     "disponible":  true
@@ -234,31 +234,31 @@
                                    "disponible":  false
                                },
     "Chedraui|3834914":  {
-                             "visto":  "2026-11-20T17:07:13",
+                             "visto":  "2026-11-20T18:05:53",
                              "precio":  8990,
                              "avisado":  null,
                              "disponible":  false
                          },
     "Elektra|3024782":  {
-                            "visto":  "2026-11-20T17:07:13",
+                            "visto":  "2026-11-20T18:05:53",
                             "precio":  12499,
                             "avisado":  null,
                             "disponible":  true
                         },
     "Cyberpuerta|1000049888":  {
-                                   "visto":  "2026-11-20T17:07:13",
-                                   "precio":  21529,
+                                   "visto":  "2026-11-20T18:05:53",
+                                   "precio":  21469,
                                    "avisado":  null,
                                    "disponible":  true
                                },
-    "Liverpool|1150221311":  {
-                                 "visto":  "2026-11-10T16:26:01",
-                                 "precio":  14499,
-                                 "avisado":  null,
-                                 "disponible":  false
-                             },
+    "Elektra|1301964100":  {
+                               "visto":  "2026-11-10T20:42:31",
+                               "precio":  27999,
+                               "avisado":  null,
+                               "disponible":  false
+                           },
     "Cyberpuerta|1000044177":  {
-                                   "visto":  "2026-11-20T17:07:13",
+                                   "visto":  "2026-11-20T18:05:53",
                                    "precio":  9389,
                                    "avisado":  null,
                                    "disponible":  false
