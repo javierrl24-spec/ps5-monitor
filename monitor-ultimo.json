@@ -1,7 +1,7 @@
 ﻿{
-    "revisado":  "2026-11-23T14:53:52Z",
+    "revisado":  "2026-11-23T15:55:52Z",
     "fallas":  [
-                   "Liverpool"
+
                ],
     "precios":  [
                     {
@@ -39,6 +39,24 @@
                         "nombre":  "Sony PlayStation 5 Slim Standard + Returnal y Ratchet \u0026 Clank: Rift Apart 1TB, Wi-Fi, Lector de Discos, Negro/Blanco",
                         "internacional":  false,
                         "url":  "https://www.cyberpuerta.mx/Audio-y-Video/Consolas-y-Juegos/PlayStation-5-PS5/Consolas-PlayStation-5/Sony-PlayStation-5-Slim-Standard-Returnal-y-Ratchet-Clank-Rift-Apart-1TB-Wi-Fi-Lector-de-Discos-Negro-Blanco.html"
+                    },
+                    {
+                        "tienda":  "Liverpool",
+                        "producto":  "PS5 Slim Digital",
+                        "condicion":  "Nuevo",
+                        "precio":  12499,
+                        "nombre":  "Consola PS5 de 825 GB edición bundle",
+                        "internacional":  false,
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5-de-1-tb-edici%c3%b3n-est%c3%a1ndar/1186785793"
+                    },
+                    {
+                        "tienda":  "Liverpool",
+                        "producto":  "PS5 Slim Disco",
+                        "condicion":  "Nuevo",
+                        "precio":  14699,
+                        "nombre":  "Consola PS5 de 1 TB edición estándar",
+                        "internacional":  false,
+                        "url":  "https://www.liverpool.com.mx/tienda/pdp/consola-ps5/1156059630"
                     }
                 ]
 }
